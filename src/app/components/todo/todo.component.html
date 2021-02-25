@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-md-1">
+    <input type="checkbox" [checked]="todo?.completed" />
+  </div>
+  <div class="col-md-8 text" *ngIf="!isEditmode">
+    {{ todo.title }}
+  </div>
+  <ng-container *ngIf="isEditmode">
+    <input
+      type="text"
+      class="col-md-8 text"
+      #editValue
+      placeholder="{{ todo?.title }}"
+    />
+  </ng-container>
+  <div class="col-md-3 buttons">
+    <button class="button-primary" (click)="removeToDo()">Delete</button>
+    <button
+      class="button-primary"
+      *ngIf="!isEditmode"
+      (click)="changeToEditMode()"
+    >
+      Edit
+    </button>
+    <button *ngIf="isEditmode" class="button-primary" (click)="update()">
+      Update
+    </button>
+  </div>
+</div>

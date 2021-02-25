@@ -1,0 +1,10 @@
+<div class="row">
+  <app-search-box (serchBoxClick)="addTodo($event)"></app-search-box>
+</div>
+<ng-container *ngFor="let todo of todos | async | slice: 0:10">
+  <app-todo
+    [todo]="todo"
+    (editTodo)="editTodo($event)"
+    (removeTodoClick)="remove($event)"
+  ></app-todo>
+</ng-container>
